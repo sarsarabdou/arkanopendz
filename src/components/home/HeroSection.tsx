@@ -4,16 +4,15 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContentByKey } from '@/hooks/useSupabaseData';
 import { ArrowRight, MapPin, Award, Users, Clock } from 'lucide-react';
-import heroImage from '@/assets/hero-construction.jpg';
+import heroImage from '@/assets/hero-aluminum-manufacturing.jpg';
+import arkanLogo from '@/assets/arkan-logo.png';
 
 const HeroSection = () => {
   const { language, t } = useLanguage();
   const quoteUrl = useContentByKey('quote_app_url', 'general');
   
   const handleQuoteClick = () => {
-    if (quoteUrl) {
-      window.open(quoteUrl, '_blank');
-    }
+    window.open('https://arkanopen-15.lovable.app/', '_blank');
   };
 
   const stats = [

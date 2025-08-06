@@ -18,10 +18,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 213 20% 17%;
 
-    /* Primary: ARKAN Orange (#f59e0b) */
-    --primary: 38 92% 50%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 45 97% 54%;
+    /* Primary: ARKAN Yellow (#fbbf24) */
+    --primary: 45 93% 58%;
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 45 93% 70%;
 
     /* Secondary: ARKAN Blue Light (#3182ce) */
     --secondary: 209 84% 49%;
@@ -47,13 +47,13 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* ARKAN Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(210 55% 23%) 0%, hsl(209 84% 49%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(210 55% 23%) 0%, hsl(209 84% 49%) 50%, hsl(209 84% 65%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(45 93% 58%) 0%, hsl(45 93% 70%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 55% 23%) 0%, hsl(45 93% 58%) 50%, hsl(45 93% 70%) 100%);
     --gradient-body: linear-gradient(135deg, hsl(220 15% 97%) 0%, hsl(220 15% 95%) 100%);
 
     /* Shadows */
-    --shadow-arkan: 0 10px 30px -10px hsl(210 55% 23% / 0.3);
-    --shadow-glow: 0 0 40px hsl(209 84% 65% / 0.4);
+    --shadow-arkan: 0 10px 30px -10px hsl(45 93% 58% / 0.3);
+    --shadow-glow: 0 0 40px hsl(45 93% 70% / 0.4);
     --shadow-card: 0 4px 20px hsl(210 55% 23% / 0.1);
 
     /* Animations */

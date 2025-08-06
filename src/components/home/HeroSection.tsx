@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContentByKey } from '@/hooks/useSupabaseData';
 import { ArrowRight, MapPin, Award, Users, Clock } from 'lucide-react';
+import heroImage from '@/assets/hero-construction.jpg';
 
 const HeroSection = () => {
   const { language, t } = useLanguage();
@@ -40,9 +41,17 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 hero-gradient">
-        <div className="absolute inset-0 bg-black/20" />
+      {/* Background with hero image and gradient overlay */}
+      <div 
+        className="absolute inset-0 hero-gradient"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundBlendMode: 'overlay'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/80" />
       </div>
       
       {/* Floating elements for visual interest */}

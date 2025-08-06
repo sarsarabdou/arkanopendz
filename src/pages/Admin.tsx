@@ -16,6 +16,8 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
+import { ProductForm } from '@/components/admin/ProductForm';
+import { ProjectForm } from '@/components/admin/ProjectForm';
 import { 
   Palette, 
   Share2, 
@@ -32,6 +34,12 @@ import {
   BarChart3
 } from 'lucide-react';
 
+// Import generated images
+import heroImage from '@/assets/hero-construction.jpg';
+import productBlocks from '@/assets/product-blocks.jpg';
+import productCement from '@/assets/product-cement.jpg';
+import projectSample from '@/assets/project-sample1.jpg';
+
 const Admin = () => {
   const { language, t } = useLanguage();
   const { toast } = useToast();
@@ -43,6 +51,10 @@ const Admin = () => {
 
   const [selectedTab, setSelectedTab] = useState('dashboard');
   const [isEditing, setIsEditing] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<any>(null);
+  const [editingProject, setEditingProject] = useState<any>(null);
+  const [showProductForm, setShowProductForm] = useState(false);
+  const [showProjectForm, setShowProjectForm] = useState(false);
 
   // Color Management
   const [colors, setColors] = useState({
@@ -168,6 +180,61 @@ const Admin = () => {
     }
   };
 
+  const handleProductEdit = (product: any) => {
+    setEditingProduct(product);
+    setShowProductForm(true);
+  };
+
+  const handleProjectEdit = (project: any) => {
+    setEditingProject(project);
+    setShowProjectForm(true);
+  };
+
+  const handleProductDelete = async (productId: string) => {
+    try {
+      await supabase
+        .from('products')
+        .delete()
+        .eq('id', productId);
+      
+      toast({
+        title: language === 'fr' ? 'Produit supprimé' : 'تم حذف المنتج',
+        description: language === 'fr' ? 'Le produit a été supprimé avec succès' : 'تم حذف المنتج بنجاح',
+      });
+    } catch (error) {
+      toast({
+        title: language === 'fr' ? 'Erreur' : 'خطأ',
+        description: language === 'fr' ? 'Erreur lors de la suppression' : 'خطأ في الحذف',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const handleProjectDelete = async (projectId: string) => {
+    try {
+      await supabase
+        .from('projects')
+        .delete()
+        .eq('id', projectId);
+      
+      toast({
+        title: language === 'fr' ? 'Projet supprimé' : 'تم حذف المشروع',
+        description: language === 'fr' ? 'Le projet a été supprimé avec succès' : 'تم حذف المشروع بنجاح',
+      });
+    } catch (error) {
+      toast({
+        title: language === 'fr' ? 'Erreur' : 'خطأ',
+        description: language === 'fr' ? 'Erreur lors de la suppression' : 'خطأ في الحذف',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const refreshData = () => {
+    // This will trigger a re-fetch of the data
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -251,7 +318,10 @@ const Admin = () => {
                 <Button 
                   variant="outline" 
                   className="h-20 flex flex-col gap-2"
-                  onClick={() => setSelectedTab('products')}
+                  onClick={() => {
+                    setEditingProduct(null);
+                    setShowProductForm(true);
+                  }}
                 >
                   <Plus className="w-6 h-6" />
                   {language === 'fr' ? 'Ajouter Produit' : 'إضافة منتج'}
@@ -259,7 +329,10 @@ const Admin = () => {
                 <Button 
                   variant="outline" 
                   className="h-20 flex flex-col gap-2"
-                  onClick={() => setSelectedTab('projects')}
+                  onClick={() => {
+                    setEditingProject(null);
+                    setShowProjectForm(true);
+                  }}
                 >
                   <Plus className="w-6 h-6" />
                   {language === 'fr' ? 'Ajouter Projet' : 'إضافة مشروع'}
@@ -428,7 +501,13 @@ const Admin = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   {language === 'fr' ? 'Gestion des Produits' : 'إدارة المنتجات'}
-                  <Button className="btn-arkan">
+                  <Button 
+                    className="btn-arkan"
+                    onClick={() => {
+                      setEditingProduct(null);
+                      setShowProductForm(true);
+                    }}
+                  >
                     <Plus className="w-4 h-4 mr-2" />
                     {language === 'fr' ? 'Ajouter' : 'إضافة'}
                   </Button>
@@ -438,8 +517,16 @@ const Admin = () => {
                 <div className="grid gap-4">
                   {products?.map((product) => (
                     <div key={product.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Package className="w-6 h-6 text-primary" />
+                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center overflow-hidden">
+                        {product.images?.[0] ? (
+                          <img 
+                            src={product.images[0]} 
+                            alt={product[`name_${language}` as keyof typeof product] as string}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <Package className="w-6 h-6 text-primary" />
+                        )}
                       </div>
                       <div className="flex-1">
                         <h4 className="font-medium">
@@ -456,11 +543,19 @@ const Admin = () => {
                             : (language === 'fr' ? 'Inactif' : 'غير نشط')
                           }
                         </Badge>
-                        <Button size="sm" variant="outline">
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleProductEdit(product)}
+                        >
                           <Edit className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="outline">
-                          <Upload className="w-4 h-4" />
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleProductDelete(product.id)}
+                        >
+                          <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -476,7 +571,13 @@ const Admin = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   {language === 'fr' ? 'Gestion des Projets' : 'إدارة المشاريع'}
-                  <Button className="btn-arkan">
+                  <Button 
+                    className="btn-arkan"
+                    onClick={() => {
+                      setEditingProject(null);
+                      setShowProjectForm(true);
+                    }}
+                  >
                     <Plus className="w-4 h-4 mr-2" />
                     {language === 'fr' ? 'Ajouter' : 'إضافة'}
                   </Button>
@@ -486,8 +587,16 @@ const Admin = () => {
                 <div className="grid gap-4">
                   {projects?.map((project) => (
                     <div key={project.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <FolderOpen className="w-6 h-6 text-primary" />
+                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center overflow-hidden">
+                        {project.images?.[0] ? (
+                          <img 
+                            src={project.images[0]} 
+                            alt={project[`title_${language}` as keyof typeof project] as string}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <FolderOpen className="w-6 h-6 text-primary" />
+                        )}
                       </div>
                       <div className="flex-1">
                         <h4 className="font-medium">
@@ -507,11 +616,19 @@ const Admin = () => {
                         <Badge variant="outline">
                           {project.status}
                         </Badge>
-                        <Button size="sm" variant="outline">
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleProjectEdit(project)}
+                        >
                           <Edit className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="outline">
-                          <Upload className="w-4 h-4" />
+                        <Button 
+                          size="sm" 
+                          variant="outline"
+                          onClick={() => handleProjectDelete(project.id)}
+                        >
+                          <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -522,6 +639,28 @@ const Admin = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Product Form Modal */}
+      <ProductForm
+        product={editingProduct}
+        isOpen={showProductForm}
+        onClose={() => {
+          setShowProductForm(false);
+          setEditingProduct(null);
+        }}
+        onSave={refreshData}
+      />
+
+      {/* Project Form Modal */}
+      <ProjectForm
+        project={editingProject}
+        isOpen={showProjectForm}
+        onClose={() => {
+          setShowProjectForm(false);
+          setEditingProject(null);
+        }}
+        onSave={refreshData}
+      />
     </div>
   );
 };

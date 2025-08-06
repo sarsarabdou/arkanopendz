@@ -64,14 +64,24 @@ const Products = () => {
                       {product.category}
                     </CardDescription>
                   </div>
-                  <Badge variant="secondary">{t('products.available')}</Badge>
+                  <Badge variant="secondary">Prix sur demande</Badge>
                 </div>
               </CardHeader>
               
               <CardContent className="space-y-4">
-                {/* Product Image Placeholder */}
-                <div className="h-40 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg flex items-center justify-center">
-                  <Building className="w-16 h-16 text-primary/40" />
+                {/* Product Image */}
+                <div className="h-40 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg overflow-hidden">
+                  {product.images && product.images.length > 0 ? (
+                    <img 
+                      src={product.images[0]} 
+                      alt={product[`name_${language}` as keyof typeof product] as string}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Building className="w-16 h-16 text-primary/40" />
+                    </div>
+                  )}
                 </div>
                 
                 {/* Description */}
@@ -79,29 +89,26 @@ const Products = () => {
                   {product[`description_${language}` as keyof typeof product] as string}
                 </p>
                 
-                {/* Advantages */}
-                {product[`advantages_${language}` as keyof typeof product] && (
+                {/* Applications */}
+                {product[`applications_${language}` as keyof typeof product] && (
                   <div className="space-y-2">
-                    <h4 className="font-medium text-sm">{t('products.advantages')}:</h4>
+                    <h4 className="font-medium text-sm">Applications principales :</h4>
                     <div className="flex flex-wrap gap-1">
-                      {(product[`advantages_${language}` as keyof typeof product] as string[])?.slice(0, 3).map((advantage, index) => (
+                      {(product[`applications_${language}` as keyof typeof product] as string[])?.slice(0, 2).map((application, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
-                          {advantage}
+                          {application}
                         </Badge>
                       ))}
                     </div>
                   </div>
                 )}
                 
-                {/* Coverage */}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4" />
-                  <span>{t('products.coverage')}</span>
-                </div>
-                
                 {/* CTA Button */}
-                <Button className="w-full btn-arkan">
-                  {t('btn.quote')}
+                <Button 
+                  className="w-full btn-arkan"
+                  onClick={() => window.open('https://arkanopen-15.lovable.app/', '_blank')}
+                >
+                  Demander un devis
                 </Button>
               </CardContent>
             </Card>

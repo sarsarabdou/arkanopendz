@@ -8,81 +8,110 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* ARKAN Open Brand Colors */
+    --background: 220 15% 97%;
+    --foreground: 213 20% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 213 20% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 213 20% 17%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: ARKAN Blue (#1a365d) */
+    --primary: 210 55% 23%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 55% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: ARKAN Blue Light (#3182ce) */
+    --secondary: 209 84% 49%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent: ARKAN Blue Lighter (#4299e1) */
+    --accent: 209 84% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 213 10% 55%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --warning: 42 87% 55%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 209 84% 49%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* ARKAN Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 55% 23%) 0%, hsl(209 84% 49%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 55% 23%) 0%, hsl(209 84% 49%) 50%, hsl(209 84% 65%) 100%);
+    --gradient-body: linear-gradient(135deg, hsl(220 15% 97%) 0%, hsl(220 15% 95%) 100%);
+
+    /* Shadows */
+    --shadow-arkan: 0 10px 30px -10px hsl(210 55% 23% / 0.3);
+    --shadow-glow: 0 0 40px hsl(209 84% 65% / 0.4);
+    --shadow-card: 0 4px 20px hsl(210 55% 23% / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode with ARKAN brand consistency */
+    --background: 213 20% 8%;
+    --foreground: 220 15% 97%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 213 20% 12%;
+    --card-foreground: 220 15% 97%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 213 20% 12%;
+    --popover-foreground: 220 15% 97%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 209 84% 65%;
+    --primary-foreground: 213 20% 8%;
+    --primary-glow: 209 84% 75%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 213 20% 15%;
+    --secondary-foreground: 220 15% 97%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 213 20% 18%;
+    --accent-foreground: 209 84% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --muted: 213 20% 15%;
+    --muted-foreground: 213 10% 65%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 46%;
+    --warning: 42 87% 65%;
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 213 20% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 213 20% 18%;
+    --input: 213 20% 18%;
+    --ring: 209 84% 65%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 20% 12%) 0%, hsl(209 84% 49%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(213 20% 8%) 0%, hsl(210 55% 23%) 50%, hsl(209 84% 49%) 100%);
+    --gradient-body: linear-gradient(135deg, hsl(213 20% 8%) 0%, hsl(213 20% 12%) 100%);
+
+    --shadow-arkan: 0 10px 30px -10px hsl(209 84% 65% / 0.3);
+    --shadow-glow: 0 0 40px hsl(209 84% 75% / 0.4);
+    --shadow-card: 0 4px 20px hsl(213 20% 5% / 0.5);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +129,97 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-body);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Arabic RTL Support */
+  html[dir="rtl"] {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-glow;
+  }
+}
+
+@layer components {
+  /* ARKAN Button Variants */
+  .btn-arkan {
+    @apply bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-arkan);
+    transform: translateY(0);
+  }
+
+  .btn-arkan:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-arkan-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .btn-arkan-ghost {
+    @apply text-primary hover:bg-primary/10 font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  /* ARKAN Card */
+  .card-arkan {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-arkan:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-arkan);
+  }
+
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Floating Animation */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Glow Effect */
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Smooth transitions */
+  .transition-arkan {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
   }
 }

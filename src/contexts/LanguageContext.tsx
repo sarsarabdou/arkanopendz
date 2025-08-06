@@ -32,6 +32,12 @@ const translations: Record<string, Record<Language, string>> = {
   'nav.quote': { fr: 'Devis', ar: 'عرض السعر' },
   'nav.contact': { fr: 'Contact', ar: 'اتصل بنا' },
   
+  // Pages
+  'products.title': { fr: 'Nos Produits', ar: 'منتجاتنا' },
+  'projects.title': { fr: 'Projets Réalisés', ar: 'المشاريع المنجزة' },
+  'about.title': { fr: 'Qui Nous Sommes', ar: 'من نحن' },
+  'contact.title': { fr: 'Contactez-Nous', ar: 'اتصل بنا' },
+  
   // Hero Section
   'hero.title': { fr: 'Votre partenaire de confiance en menuiserie aluminium et PVC', ar: 'شريكك الموثوق في نجارة الألمنيوم و البي في سي' },
   'hero.subtitle': { fr: 'Solutions sur mesure, qualité professionnelle. Basés à Oran, nous servons toute l\'Algérie', ar: 'حلول مخصصة، جودة مهنية. مقرنا في وهران، نخدم كامل الجزائر' },

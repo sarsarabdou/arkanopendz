@@ -18,10 +18,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 213 20% 17%;
 
-    /* Primary: ARKAN Blue (#1a365d) */
-    --primary: 210 55% 23%;
+    /* Primary: ARKAN Orange (#f59e0b) */
+    --primary: 38 92% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 55% 35%;
+    --primary-glow: 45 97% 54%;
 
     /* Secondary: ARKAN Blue Light (#3182ce) */
     --secondary: 209 84% 49%;

@@ -18,9 +18,7 @@ const QuoteSection = () => {
   const quoteUrl = useContentByKey('quote_app_url', 'general');
   
   const handleQuoteClick = () => {
-    if (quoteUrl) {
-      window.open(quoteUrl, '_blank');
-    }
+    window.open('https://arkanopen-15.lovable.app/', '_blank');
   };
 
   const features = [

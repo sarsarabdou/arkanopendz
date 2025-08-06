@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useSocialLinks, useContentByKey } from '@/hooks/useSupabaseData';
 import { Menu, X, Phone, Globe, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import arkanLogo from '@/assets/arkan-logo.png';
 import { cn } from '@/lib/utils';
 
 const Header = () => {
@@ -43,9 +44,7 @@ const Header = () => {
   };
 
   const handleQuoteClick = () => {
-    if (quoteUrl) {
-      window.open(quoteUrl, '_blank');
-    }
+    window.open('https://arkanopen-15.lovable.app/', '_blank');
   };
 
   return (
@@ -99,9 +98,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
-            </div>
+            <img src={arkanLogo} alt="ARKAN Open" className="h-12 w-auto" />
             <div className="flex flex-col">
               <span className="font-bold text-xl text-primary">ARKAN</span>
               <span className="text-xs text-muted-foreground -mt-1">Open</span>

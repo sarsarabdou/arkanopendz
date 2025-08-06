@@ -79,17 +79,17 @@ const HeroSection = () => {
           </h1>
 
           {/* Hero Title */}
-          <h2 className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 font-medium">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-blue-600 mb-4 font-medium">
             {t('hero.title')}
           </h2>
 
           {/* Hero Subtitle */}
-          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-blue-500 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          {/* CTA Button */}
+          <div className="flex items-center justify-center mb-12">
             <Button 
               onClick={handleQuoteClick}
               size="lg"
@@ -97,14 +97,6 @@ const HeroSection = () => {
             >
               {t('hero.cta')}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="text-white border-white hover:bg-white hover:text-primary text-lg px-8 py-4"
-            >
-              {t('btn.viewMore')}
             </Button>
           </div>
 

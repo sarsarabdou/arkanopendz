@@ -18,6 +18,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from '@/hooks/use-toast';
 import { ProductForm } from '@/components/admin/ProductForm';
 import { ProjectForm } from '@/components/admin/ProjectForm';
+import HomeCustomizer from '@/components/admin/HomeCustomizer';
 import { 
   Palette, 
   Share2, 
@@ -262,10 +263,14 @@ const Admin = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <Tabs value={selectedTab} onValueChange={setSelectedTab}>
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="dashboard" className="flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
               {language === 'fr' ? 'Tableau de bord' : 'لوحة التحكم'}
+            </TabsTrigger>
+            <TabsTrigger value="homepage" className="flex items-center gap-2">
+              <Settings className="w-4 h-4" />
+              {language === 'fr' ? 'Page d\'accueil' : 'الصفحة الرئيسية'}
             </TabsTrigger>
             <TabsTrigger value="colors" className="flex items-center gap-2">
               <Palette className="w-4 h-4" />
@@ -355,6 +360,11 @@ const Admin = () => {
                 </Button>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Homepage Customizer Tab */}
+          <TabsContent value="homepage" className="space-y-6">
+            <HomeCustomizer onPreview={() => window.open('/', '_blank')} />
           </TabsContent>
 
           {/* Colors Tab */}

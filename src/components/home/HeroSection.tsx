@@ -50,7 +50,7 @@ const HeroSection = () => {
           backgroundBlendMode: 'overlay'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-secondary/50" />
       </div>
       
       {/* Floating elements for visual interest */}

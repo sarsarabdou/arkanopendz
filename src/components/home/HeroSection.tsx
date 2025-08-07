@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContentByKey } from '@/hooks/useSupabaseData';
 import { ArrowRight, MapPin, Award, Users, Clock } from 'lucide-react';
-import heroImage from '@/assets/hero-workshop-manufacturing.jpg';
+import heroImage from '@/assets/hero-arkan-workshop.jpg';
 import arkanLogo from '@/assets/arkan-logo.png';
 
 const HeroSection = () => {

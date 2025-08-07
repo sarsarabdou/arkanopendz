@@ -58,9 +58,9 @@ const ProjectsShowcase = () => {
               <div className="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
                 {/* Project image with fallback */}
                 <img 
-                  src={`/placeholder-${index + 1}.jpg`}
+                  src={project.images && project.images.length > 0 ? project.images[0] : `/placeholder-${index + 1}.jpg`}
                   alt={language === 'fr' ? project.title_fr : project.title_ar}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
@@ -69,7 +69,7 @@ const ProjectsShowcase = () => {
                   }}
                 />
                 {/* Fallback placeholder */}
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center" style={{ display: 'none' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center" style={{ display: 'none' }}>
                   <Eye className="w-12 h-12 text-white/80" />
                 </div>
                 

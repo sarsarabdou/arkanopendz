@@ -66,25 +66,25 @@ const HeroSection = () => {
           {/* Badge */}
           <Badge 
             variant="secondary" 
-            className="mb-6 bg-white/20 text-white border-white/30 backdrop-blur-sm"
+            className="mb-6 bg-white/20 text-black border-black/30 backdrop-blur-sm"
           >
-            <MapPin className="w-4 h-4 mr-2" />
+            <MapPin className="w-4 h-4 mr-2 text-black" />
             {language === 'fr' ? 'Basés à Oran - Service National' : 'مقرنا في وهران - خدمة وطنية'}
           </Badge>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            <span className="block">ARKAN</span>
-            <span className="block text-white glow-effect">Open</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight" data-hero-title>
+            <span className="block text-black">ARKAN</span>
+            <span className="block text-primary glow-effect">Open</span>
           </h1>
 
           {/* Hero Title */}
-          <h2 className="text-xl md:text-2xl lg:text-3xl text-white mb-4 font-medium">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-black mb-4 font-medium" data-hero-subtitle>
             {t('hero.title')}
           </h2>
 
           {/* Hero Subtitle */}
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-black/90 mb-8 max-w-3xl mx-auto leading-relaxed" data-hero-description>
             {t('hero.subtitle')}
           </p>
 
@@ -93,7 +93,7 @@ const HeroSection = () => {
             <Button 
               onClick={handleQuoteClick}
               size="lg"
-              className="btn-arkan text-lg px-8 py-4 group animate-pulse hover:animate-none"
+              className="btn-arkan text-lg px-8 py-4 group animate-bounce hover:animate-pulse"
             >
               {t('hero.cta')}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -107,13 +107,13 @@ const HeroSection = () => {
                 key={index} 
                 className="text-center p-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
               >
-                <div className="flex items-center justify-center mb-2 text-accent">
+                <div className="flex items-center justify-center mb-2 text-black">
                   {stat.icon}
                 </div>
-                <div className="text-2xl font-bold text-white mb-1">
+                <div className="text-2xl font-bold text-black mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white/80">
+                <div className="text-sm text-black/80">
                   {stat.label}
                 </div>
               </div>
@@ -124,8 +124,8 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
+        <div className="w-6 h-10 border-2 border-black/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-black/70 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

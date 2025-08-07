@@ -43,14 +43,14 @@ const HomeCustomizer: React.FC<HomeCustomizerProps> = ({ onPreview }) => {
   // Text Styles
   const [titleStyle, setTitleStyle] = useState<TextStyle>({
     fontSize: 48,
-    color: '#3182ce',
+    color: '#000000',
     fontWeight: 'bold',
     fontFamily: 'Inter'
   });
   
   const [subtitleStyle, setSubtitleStyle] = useState<TextStyle>({
     fontSize: 24,
-    color: '#3182ce',
+    color: '#000000',
     fontWeight: 'medium',
     fontFamily: 'Inter'
   });
@@ -63,32 +63,23 @@ const HomeCustomizer: React.FC<HomeCustomizerProps> = ({ onPreview }) => {
   const handleSave = async () => {
     setIsLoading(true);
     try {
-      // Apply styles to CSS variables
-      const root = document.documentElement;
-      root.style.setProperty('--primary', `42 100% 57%`); // ARKAN Yellow
-      root.style.setProperty('--secondary', secondaryColor);
-      root.style.setProperty('--accent', accentColor);
-      
       // Apply hero text content
       const heroTitleElement = document.querySelector('[data-hero-title]') as HTMLElement;
       const heroSubtitleElement = document.querySelector('[data-hero-subtitle]') as HTMLElement;
       const heroDescriptionElement = document.querySelector('[data-hero-description]') as HTMLElement;
       
-      if (heroTitleElement) heroTitleElement.textContent = heroTitle;
-      if (heroSubtitleElement) heroSubtitleElement.textContent = heroSubtitle;
-      if (heroDescriptionElement) heroDescriptionElement.textContent = heroDescription;
-      
-      // Apply text styles
       if (heroTitleElement) {
-        heroTitleElement.style.fontSize = `${titleStyle.fontSize}px`;
-        heroTitleElement.style.color = titleStyle.color;
-        heroTitleElement.style.fontWeight = titleStyle.fontWeight;
+        heroTitleElement.innerHTML = `<span class="block" style="color: ${titleStyle.color}; font-size: ${titleStyle.fontSize}px; font-weight: ${titleStyle.fontWeight};">${heroTitle.split(' ')[0]}</span><span class="block text-primary glow-effect" style="font-size: ${titleStyle.fontSize}px; font-weight: ${titleStyle.fontWeight};">${heroTitle.split(' ')[1]}</span>`;
       }
-      
       if (heroSubtitleElement) {
+        heroSubtitleElement.textContent = heroSubtitle;
         heroSubtitleElement.style.fontSize = `${subtitleStyle.fontSize}px`;
         heroSubtitleElement.style.color = subtitleStyle.color;
         heroSubtitleElement.style.fontWeight = subtitleStyle.fontWeight;
+      }
+      if (heroDescriptionElement) {
+        heroDescriptionElement.textContent = heroDescription;
+        heroDescriptionElement.style.color = subtitleStyle.color;
       }
       
       toast({

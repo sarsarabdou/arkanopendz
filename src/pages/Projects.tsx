@@ -52,10 +52,13 @@ const Projects = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-primary mb-4">
-            {t('projects.title')}
+            {language === 'fr' ? 'Nos Projets Réalisés' : 'مشاريعنا المنجزة'}
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('projects.subtitle')}
+            {language === 'fr' 
+              ? 'Découvrez nos réalisations à travers toute l\'Algérie'
+              : 'اكتشف إنجازاتنا عبر كامل الجزائر'
+            }
           </p>
         </div>
 
@@ -64,7 +67,10 @@ const Projects = () => {
           <TabsList className="grid w-full grid-cols-auto md:flex md:justify-center gap-2">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category} className="capitalize">
-                {category === 'all' ? t('projects.all') : category}
+                {category === 'all' 
+                  ? (language === 'fr' ? 'Tous' : 'الكل') 
+                  : category
+                }
               </TabsTrigger>
             ))}
           </TabsList>
@@ -84,7 +90,7 @@ const Projects = () => {
                       <Badge variant="secondary">{project.category}</Badge>
                       {project.featured && (
                         <Badge variant="default" className="bg-primary">
-                          {t('projects.featured')}
+                          {language === 'fr' ? 'Vedette' : 'مميز'}
                         </Badge>
                       )}
                     </CardDescription>
@@ -93,15 +99,31 @@ const Projects = () => {
               </CardHeader>
               
               <CardContent className="space-y-4">
-                {/* Project Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <span className="text-2xl font-bold text-primary">
-                        {(project[`title_${language}` as keyof typeof project] as string)?.[0]}
-                      </span>
+                {/* Project Image */}
+                <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg overflow-hidden">
+                  <img 
+                    src={'/placeholder-project.jpg'}
+                    alt={project[`title_${language}` as keyof typeof project] as string}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback placeholder */}
+                  <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg flex items-center justify-center" style={{ display: 'none' }}>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span className="text-2xl font-bold text-primary">
+                          {(project[`title_${language}` as keyof typeof project] as string)?.[0]}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {language === 'fr' ? 'Image du projet' : 'صورة المشروع'}
+                      </p>
                     </div>
-                    <p className="text-sm text-muted-foreground">{t('projects.image_placeholder')}</p>
                   </div>
                 </div>
                 
@@ -149,7 +171,7 @@ const Projects = () => {
                 
                 {/* CTA Button */}
                 <Button className="w-full btn-arkan">
-                  {t('projects.view_details')}
+                  {language === 'fr' ? 'Voir les détails' : 'عرض التفاصيل'}
                 </Button>
               </CardContent>
             </Card>
@@ -163,10 +185,13 @@ const Projects = () => {
               <MapPin className="w-8 h-8 text-muted-foreground" />
             </div>
             <h3 className="text-lg font-medium text-muted-foreground mb-2">
-              {t('projects.empty')}
+              {language === 'fr' ? 'Aucun projet trouvé' : 'لم يتم العثور على مشاريع'}
             </h3>
             <p className="text-sm text-muted-foreground">
-              {t('projects.empty_description')}
+              {language === 'fr' 
+                ? 'Aucun projet disponible dans cette catégorie'
+                : 'لا توجد مشاريع متاحة في هذه الفئة'
+              }
             </p>
           </div>
         )}

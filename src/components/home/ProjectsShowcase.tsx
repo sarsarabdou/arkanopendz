@@ -55,9 +55,21 @@ const ProjectsShowcase = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {featuredProjects.map((project, index) => (
             <Card key={project.id} className="card-arkan group overflow-hidden">
-              <div className="relative h-48 bg-gradient-to-br from-primary to-secondary">
-                {/* Placeholder for project image */}
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+              <div className="relative h-48 bg-gradient-to-br from-primary to-secondary overflow-hidden">
+                {/* Project image with fallback */}
+                <img 
+                  src={`/placeholder-${index + 1}.jpg`}
+                  alt={language === 'fr' ? project.title_fr : project.title_ar}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+                {/* Fallback placeholder */}
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center" style={{ display: 'none' }}>
                   <Eye className="w-12 h-12 text-white/80" />
                 </div>
                 

@@ -75,16 +75,16 @@ const HeroSection = () => {
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             <span className="block">ARKAN</span>
-            <span className="block text-accent glow-effect">Open</span>
+            <span className="block text-white glow-effect">Open</span>
           </h1>
 
           {/* Hero Title */}
-          <h2 className="text-xl md:text-2xl lg:text-3xl text-blue-600 mb-4 font-medium">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-white mb-4 font-medium">
             {t('hero.title')}
           </h2>
 
           {/* Hero Subtitle */}
-          <p className="text-lg md:text-xl text-blue-500 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
@@ -93,7 +93,7 @@ const HeroSection = () => {
             <Button 
               onClick={handleQuoteClick}
               size="lg"
-              className="btn-arkan text-lg px-8 py-4 group"
+              className="btn-arkan text-lg px-8 py-4 group animate-pulse hover:animate-none"
             >
               {t('hero.cta')}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

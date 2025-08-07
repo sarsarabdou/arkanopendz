@@ -16,6 +16,7 @@ import {
   Award
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import arkanLogo from '@/assets/arkan-logo.png';
 
 const ServicesSection = () => {
   const { language, t } = useLanguage();
@@ -62,7 +63,7 @@ const ServicesSection = () => {
             {t('services.title')}
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            {language === 'fr' ? 'Solutions Complètes' : 'حلول شاملة'}
+            {language === 'fr' ? 'Nos Solutions' : 'حلولنا'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('services.subtitle')}
@@ -74,9 +75,16 @@ const ServicesSection = () => {
           {products?.slice(0, 6).map((product, index) => (
             <Card key={product.id} className="card-arkan group cursor-pointer">
               <CardHeader className="pb-4">
-                <div className={`w-16 h-16 ${getServiceColor(index)} rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  {getServiceIcon(product.category)}
-                </div>
+                {/* Product Image */}
+                {product.images?.[0] && (
+                  <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
+                    <img
+                      src={product.images[0]}
+                      alt={language === 'fr' ? product.name_fr : product.name_ar}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
                 <CardTitle className="text-xl mb-2">
                   {language === 'fr' ? product.name_fr : product.name_ar}
                 </CardTitle>
@@ -156,8 +164,12 @@ const ServicesSection = () => {
             </div>
             
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-32 h-32 bg-primary rounded-full text-primary-foreground text-4xl font-bold mb-6 glow-effect">
-                A
+              <div className="inline-flex items-center justify-center w-32 h-32 bg-primary rounded-full text-primary-foreground mb-6 glow-effect overflow-hidden">
+                <img 
+                  src={arkanLogo} 
+                  alt="ARKAN Logo" 
+                  className="w-20 h-20 object-contain"
+                />
               </div>
               <h4 className="text-xl font-semibold mb-2">
                 {language === 'fr' ? 'Excellence & Innovation' : 'التميز والابتكار'}

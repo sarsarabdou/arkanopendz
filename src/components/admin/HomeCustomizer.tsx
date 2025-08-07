@@ -63,17 +63,42 @@ const HomeCustomizer: React.FC<HomeCustomizerProps> = ({ onPreview }) => {
   const handleSave = async () => {
     setIsLoading(true);
     try {
-      // Save to database logic here
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      // Apply styles to CSS variables
+      const root = document.documentElement;
+      root.style.setProperty('--primary', `42 100% 57%`); // ARKAN Yellow
+      root.style.setProperty('--secondary', secondaryColor);
+      root.style.setProperty('--accent', accentColor);
+      
+      // Apply hero text content
+      const heroTitleElement = document.querySelector('[data-hero-title]') as HTMLElement;
+      const heroSubtitleElement = document.querySelector('[data-hero-subtitle]') as HTMLElement;
+      const heroDescriptionElement = document.querySelector('[data-hero-description]') as HTMLElement;
+      
+      if (heroTitleElement) heroTitleElement.textContent = heroTitle;
+      if (heroSubtitleElement) heroSubtitleElement.textContent = heroSubtitle;
+      if (heroDescriptionElement) heroDescriptionElement.textContent = heroDescription;
+      
+      // Apply text styles
+      if (heroTitleElement) {
+        heroTitleElement.style.fontSize = `${titleStyle.fontSize}px`;
+        heroTitleElement.style.color = titleStyle.color;
+        heroTitleElement.style.fontWeight = titleStyle.fontWeight;
+      }
+      
+      if (heroSubtitleElement) {
+        heroSubtitleElement.style.fontSize = `${subtitleStyle.fontSize}px`;
+        heroSubtitleElement.style.color = subtitleStyle.color;
+        heroSubtitleElement.style.fontWeight = subtitleStyle.fontWeight;
+      }
       
       toast({
-        title: "Modifications sauvegardées",
-        description: "Les changements ont été appliqués avec succès.",
+        title: "Modifications appliquées",
+        description: "Les changements sont visibles sur la page d'accueil.",
       });
     } catch (error) {
       toast({
         title: "Erreur",
-        description: "Impossible de sauvegarder les modifications.",
+        description: "Impossible d'appliquer les modifications.",
         variant: "destructive",
       });
     } finally {
